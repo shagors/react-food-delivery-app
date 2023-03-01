@@ -12,7 +12,7 @@ const Footer = () => {
       <Container>
         <Row>
           <Col lg="3" md="4" sm="6">
-            <div className=" footer__logo text-start">
+            <div className="footer__logo text-start">
               <img src={logo} alt="logo" />
               <h5>Tasty Treat</h5>
               <p>
@@ -25,12 +25,12 @@ const Footer = () => {
           <Col lg="3" md="4" sm="6">
             <h5 className="footer__title">Delivery Time</h5>
             <ListGroup className="deliver__time-list">
-              <ListGroupItem className=" delivery__time-item border-0 ps-0">
+              <ListGroupItem className="delivery__time-item border-0 ps-0">
                 <span>Sunday - Thursday</span>
                 <p>10:00am - 11:00pm</p>
               </ListGroupItem>
 
-              <ListGroupItem className=" delivery__time-item border-0 ps-0">
+              <ListGroupItem className="delivery__time-item border-0 ps-0">
                 <span>Friday - Saturday</span>
                 <p>Off day</p>
               </ListGroupItem>
@@ -40,14 +40,14 @@ const Footer = () => {
           <Col lg="3" md="4" sm="6">
             <h5 className="footer__title">Contact</h5>
             <ListGroup className="deliver__time-list">
-              <ListGroupItem className=" delivery__time-item border-0 ps-0">
+              <ListGroupItem className="delivery__time-item border-0 ps-0">
                 <p>Location: Rangpur-5400, Bangladesh</p>
               </ListGroupItem>
-              <ListGroupItem className=" delivery__time-item border-0 ps-0">
+              <ListGroupItem className="delivery__time-item border-0 ps-0">
                 <span>Phone: +8801770877400</span>
               </ListGroupItem>
 
-              <ListGroupItem className=" delivery__time-item border-0 ps-0">
+              <ListGroupItem className="delivery__time-item border-0 ps-0">
                 <span>Email: shajjadshagor@gmail.com</span>
               </ListGroupItem>
             </ListGroup>
