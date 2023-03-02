@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "reactstrap";
+import { Col, Container, ListGroup, ListGroupItem, Row } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import heroImg from "../assets/images/hero.png";
 import "../styles/hero-section.css";
@@ -17,6 +17,9 @@ import foodCategoryImg02 from "../assets/images/pizza.png";
 import foodCategoryImg03 from "../assets/images/bread.png";
 
 import ProductCard from "../components/UI/product-card/ProductCard";
+import whyImg from "../assets/images/location.png";
+import networkImg from "../assets/images/network.png";
+import TestimonialSlider from "../components/UI/slider/TestimonialSlider";
 
 const featureData = [
   {
@@ -39,6 +42,14 @@ const featureData = [
 const Home = () => {
   const [category, setCategory] = useState("");
   const [allProducts, setAllProducts] = useState(products);
+
+  const [hotPizza, setHotPizza] = useState([]);
+
+  useEffect(() => {
+    const filteredPizza = products.filter((item) => item.category === "Pizza");
+    const slicePizza = filteredPizza.slice(0, 4);
+    setHotPizza(slicePizza);
+  }, []);
 
   useEffect(() => {
     if (category === "ALL") {
@@ -214,6 +225,113 @@ const Home = () => {
                 <ProductCard item={item} />
               </Col>
             ))}
+          </Row>
+        </Container>
+      </section>
+
+      <section>
+        <Container>
+          <Row>
+            <Col lg="6" md="6">
+              <img src={whyImg} alt="why-tasty-treat" className="w-100" />
+            </Col>
+
+            <Col lg="6" md="6">
+              <div className="why__tasty-treat">
+                <h2 className="tasty__treat-title mb-4">
+                  Why <span>Tasty Treat?</span>
+                </h2>
+                <p className="tasty__treat-desc">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Deleniti optio dignissimos, impedit vero nostrum libero,
+                  minima distinctio error perferendis, vitae doloribus?
+                  Blanditiis libero optio ratione quas ullam unde numquam
+                  deleniti!
+                </p>
+
+                <ListGroup className="mt-5">
+                  <ListGroupItem className="border-0 ps-0">
+                    <p className="choose__us-title d-flex align-items-center gap-2">
+                      <i className="ri-checkbox-circle-line"></i> Fresh and
+                      Tasty Foods
+                    </p>
+                    <p className="choose__us-desc">
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Adipisci, modi.
+                    </p>
+                  </ListGroupItem>
+
+                  <ListGroupItem className="border-0 ps-0">
+                    <p>
+                      <p className="choose__us-title d-flex align-items-center gap-2">
+                        <i className="ri-checkbox-circle-line"></i> Quality
+                        Support
+                      </p>
+                      <p className="choose__us-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestias, nemo!
+                      </p>
+                    </p>
+                  </ListGroupItem>
+
+                  <ListGroupItem className="border-0 ps-0">
+                    <p>
+                      <p className="choose__us-title d-flex align-items-center gap-2">
+                        <i className="ri-checkbox-circle-line"></i> Order from
+                        any location
+                      </p>
+                      <p className="choose__us-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestias, nemo!
+                      </p>
+                    </p>
+                  </ListGroupItem>
+                </ListGroup>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      <section className="pt-0">
+        <Container>
+          <Row>
+            <Col lg="12" className="text-center mb-5">
+              <h2>Hot Pizza</h2>
+            </Col>
+
+            {hotPizza.map((item) => (
+              <Col lg="3" md="4" className="" key={item.id}>
+                <ProductCard item={item} />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+
+      <section>
+        <Container>
+          <Row>
+            <Col lg="6" md="6" className="">
+              <div className="testimonial">
+                <h5 className="testimonial__subtitle  mb-4">Testimonial</h5>
+                <h2 className="testimonial__title  mb-4">
+                  What our <span>customers</span> are saying
+                </h2>
+                <p className="testimonial__desc">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Soluta debitis praesentium, dicta necessitatibus laborum,
+                  placeat ad dolore, numquam eveniet expedita deserunt! Ut
+                  blanditiis fuga saepe natus deleniti aperiam aliquid at.
+                </p>
+
+                <TestimonialSlider />
+              </div>
+            </Col>
+
+            <Col lg="6" md="6" className="">
+              <img src={networkImg} alt="testimonial-img" className="w-100" />
+            </Col>
           </Row>
         </Container>
       </section>
