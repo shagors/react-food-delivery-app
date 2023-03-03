@@ -84,7 +84,7 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="6" md="6">
-              <div className="hero__content  ">
+              <div className="hero__content">
                 <h5 className="mb-3">Easy way to make an order</h5>
                 <h1 className="mb-4 hero__title">
                   <span>HUNGRY?</span> Just wait <br /> food at
@@ -157,7 +157,7 @@ const Home = () => {
             </Col>
 
             {featureData.map((item, index) => (
-              <Col lg="4" md="4" key={index} className="mt-5">
+              <Col lg="4" md="6" sm="6" key={index} className="mt-5">
                 <div className="feature__item text-center px-5 py-3">
                   <img
                     src={item.imgUrl}
@@ -221,7 +221,7 @@ const Home = () => {
             </Col>
 
             {allProducts.map((item) => (
-              <Col lg="3" md="4" key={item.id} className="mt-5">
+              <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mt-5">
                 <ProductCard item={item} />
               </Col>
             ))}
@@ -229,7 +229,7 @@ const Home = () => {
         </Container>
       </section>
 
-      <section>
+      <section className="why__choose-us">
         <Container>
           <Row>
             <Col lg="6" md="6">
@@ -249,7 +249,7 @@ const Home = () => {
                   deleniti!
                 </p>
 
-                <ListGroup className="mt-5">
+                <ListGroup className="mt-4">
                   <ListGroupItem className="border-0 ps-0">
                     <p className="choose__us-title d-flex align-items-center gap-2">
                       <i className="ri-checkbox-circle-line"></i> Fresh and
