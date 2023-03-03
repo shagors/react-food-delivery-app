@@ -80,6 +80,7 @@ const Home = () => {
 
   return (
     <Helmet title="Home">
+      {/* Heor section */}
       <section>
         <Container>
           <Row>
@@ -133,10 +134,12 @@ const Home = () => {
         </Container>
       </section>
 
+      {/* Productivity */}
       <section className="pt-0">
         <Category />
       </section>
 
+      {/* our offering and services */}
       <section>
         <Container>
           <Row>
@@ -173,6 +176,7 @@ const Home = () => {
         </Container>
       </section>
 
+      {/* Popular foods and foods items */}
       <section>
         <Container>
           <Row>
@@ -229,6 +233,7 @@ const Home = () => {
         </Container>
       </section>
 
+      {/* Why you choose us */}
       <section className="why__choose-us">
         <Container>
           <Row>
@@ -293,6 +298,7 @@ const Home = () => {
         </Container>
       </section>
 
+      {/* Hot items section */}
       <section className="pt-0">
         <Container>
           <Row>
@@ -309,6 +315,7 @@ const Home = () => {
         </Container>
       </section>
 
+      {/* Testimonials and user reviews */}
       <section>
         <Container>
           <Row>
