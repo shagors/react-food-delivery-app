@@ -1,6 +1,5 @@
 import React from "react";
 import { ListGroupItem } from "reactstrap";
-import productImg from "../../../assets/images/product_01.1.jpg";
 import "../../../styles/cart-item.css";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../../store/shopping-cart/cartSlice";
