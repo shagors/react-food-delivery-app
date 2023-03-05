@@ -1,19 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import products from "../assets/fake-data/products";
 import { useParams } from "react-router-dom";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import { Col, Container, Row } from "reactstrap";
+import ProductCard from "../components/UI/product-card/ProductCard";
 import "../styles/product-details.css";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../store/shopping-cart/cartSlice";
 
 const FoodDetails = () => {
   const [tab, setTab] = useState("desc");
+  const [enteredName, setEnteredName] = useState("");
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [reviewMsg, setReviewMsg] = useState("");
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   const product = products.find((product) => product.id === id);
   const [previewImg, setPreviewImg] = useState(product.image01);
 
-  const { title, price, category, desc } = product;
+  const { title, price, category, desc, image01 } = product;
+
+  const relatedProduct = products.filter((item) => category === item.category);
+
+  const addItem = () => {
+    dispatch(
+      cartActions.addItem({
+        id,
+        title,
+        price,
+        image01,
+      })
+    );
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    console.log(enteredName, enteredEmail, reviewMsg);
+  };
+
+  useEffect(() => {
+    setPreviewImg(product.image01);
+  }, [product]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [product]);
 
   return (
     <Helmet title="Product-details">
@@ -58,7 +92,9 @@ const FoodDetails = () => {
                 <p className="category mb-5">
                   Category: <span>{category}</span>
                 </p>
-                <button className="addToCart__btn">Add to Cart</button>
+                <button onClick={addItem} className="addToCart__btn">
+                  Add to Cart
+                </button>
               </div>
             </Col>
 
@@ -85,7 +121,7 @@ const FoodDetails = () => {
               ) : (
                 <div className="tab__form mb-3">
                   {/* user feedback */}
-                  <div className="review">
+                  <div className="review pt-5">
                     <p className="user__name mb-0">Jhon Doe</p>
                     <p className="user__email">jhon@gmail.com</p>
                     <p className="feedback__text">great food</p>
@@ -104,18 +140,30 @@ const FoodDetails = () => {
                   </div>
 
                   {/* main form for review submit */}
-                  <form className="form">
+                  <form className="form" onSubmit={submitHandler}>
                     <div className="form__group">
-                      <input type="text" placeholder="Enter Your name" />
+                      <input
+                        type="text"
+                        placeholder="Enter Your name"
+                        required
+                        onChange={(e) => setEnteredName(e.target.value)}
+                      />
                     </div>
                     <div className="form__group">
-                      <input type="text" placeholder="Enter Your Email" />
+                      <input
+                        type="text"
+                        placeholder="Enter Your Email"
+                        required
+                        onChange={(e) => setEnteredEmail(e.target.value)}
+                      />
                     </div>
                     <div className="form__group">
                       <textarea
                         rows={5}
                         type="text"
                         placeholder="Enter Your Review"
+                        required
+                        onChange={(e) => setReviewMsg(e.target.value)}
                       />
                     </div>
                     <button type="submit" className="addToCart__btn">
@@ -125,6 +173,16 @@ const FoodDetails = () => {
                 </div>
               )}
             </Col>
+
+            <Col lg="12" className="mb-5 mt-4">
+              <h2 className="related__Product-title">You might also like</h2>
+            </Col>
+
+            {relatedProduct.map((item) => (
+              <Col lg="3" md="4" sm="6" xs="6" className="mb-4" key={item.id}>
+                <ProductCard item={item} />
+              </Col>
+            ))}
           </Row>
         </Container>
       </section>
