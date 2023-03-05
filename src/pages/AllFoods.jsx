@@ -69,18 +69,12 @@ const AllFoods = () => {
               </div>
             </Col>
 
-            {displayPage
-              .filter((item) => {
-                if (searchTerm.value === "") return item;
-                if (item.title.toLowerCase().includes(searchTerm.toLowerCase()))
-                  return item;
-              })
-              .map((item) => (
-                <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
-                  {" "}
-                  <ProductCard item={item} />
-                </Col>
-              ))}
+            {displayPage.map((item) => (
+              <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
+                {" "}
+                <ProductCard item={item} />
+              </Col>
+            ))}
 
             <div>
               <ReactPaginate
